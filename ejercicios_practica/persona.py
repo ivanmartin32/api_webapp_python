@@ -71,3 +71,14 @@ def report(limit=0, offset=0):
         json_result_list.append(json_result)
 
     return json_result_list
+
+def age_report(nationality):
+    query = db.session.query(Persona)
+    ids = []
+    edades = []
+    for elemento in query:
+        if elemento.nationality == nationality:
+            ids.append(elemento.id)
+            edades.append(elemento.age)
+    
+    return ids,edades
